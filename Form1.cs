@@ -58,81 +58,310 @@ namespace WindowsFormsApp1
             }
         }
 
-        private int simpleGematria(string letter) // this only takes a "letter" and outputs a number. (dipthongs are letters)
+        private int mispar_gadol(string letter) // this only takes a "letter" and outputs a number. (dipthongs are letters)
         {
 
             switch (letter)
             {
                 case "A": return 1;
+                case "א": return 1;
                 case "E": return 1;
+
                 case "B": return 2;
+                case "ב": return 2;
+
                 case "G": return 3;
+                case "ג": return 3;
+
                 case "D": return 4;
+                case "ד": return 4;
+
                 case "H": return 5;
+                case "ה": return 5;
+
                 case "U": return 6;
+                case "ו": return 6;
                 case "V": return 6;
+
                 case "Z": return 7;
+                case "ז": return 7;
+
                 case "CH": return 8;
+                case "ח": return 8;
+
                 case "T": return 9;
+                case "ט": return 9;
+
                 case "J": return 10;
                 case "I": return 10;
                 case "Y": return 10;
+                case "י": return 10;
+
                 case "W": return 12; // V == 6: return W == VV: return 6 + 6 == 12
+
                 case "K": return 20;
+                case "כ": return 20;
+
                 case "L": return 30;
+                case "ל": return 30;
+
                 case "M": return 40;
+                case "מ": return 40;
+
                 case "N": return 50;
+                case "נ": return 50;
+
                 case "S": return 60;
+                case "ס": return 60;
+
                 case "A'A": return 70;
+                case "ע": return 70;
+
                 case "P": return 80;
+                case "פ": return 80;
+
                 case "TZ": return 90;
+                case "צ": return 90;
+
                 case "Q": return 100;
+                case "ק": return 100;
+
                 case "R": return 200;
+                case "ר": return 200;
+
                 case "SH": return 300;
+                case "ש": return 300;
+
                 case "TH": return 400;
+                case "ת": return 400;
+
                 // below are "finals" represented by concatenating a period to the input of this function
                 case "K.": return 500;
+                case "ך": return 500;
+
                 case "M.": return 600;
+                case "ם": return 600;
+
                 case "N.": return 700;
+                case "ן": return 700;
+
                 case "P.": return 800;
+                case "ף": return 800;
+
                 case "TZ.": return 900;
+                case "ץ": return 900;
+
                 default: return 0;
             }
         }
+
+
 
         private int isopsephy(string letter) // this only takes a "letter" and outputs a number. (dipthongs are letters)
         {
             switch (letter)
             {
                 case "A": return 1;
+                case "Α": return 1; //alpha
+                    
                 case "B": return 2;
+                case "Β": return 2; //beta
+
                 case "G": return 3;
+                case "Γ": return 3;
+
                 case "D": return 4;
+                case "Δ": return 4;
+
                 case "E": return 5;
+                case "Ε": return 5; //epsilon
+
                 case "W": return 6;
+                case "Ϝ": return 6; //digamma
+
                 case "Z": return 7;
+                case "Ζ": return 7; //zeta
+
                 case "H": return 8;
+                case "Η": return 8; //eta
+
                 case "TH": return 9;
+                case "Θ": return 9;
+
                 case "I": return 10;
+                case "Ι": return 10; //iota
+
                 case "K": return 20;
+                case "Κ": return 20; //kappa
+
                 case "L": return 30;
+                case "Λ": return 30;
+
                 case "M": return 40;
+                case "Μ": return 40; //mu
+
                 case "N": return 50;
+                case "Ν": return 50; //nu
+
                 case "X": return 60;
+                case "Ξ": return 60; 
+
                 case "O": return 70;
+                case "Ο": return 70;//omnicron
+
                 case "P": return 80;
+                case "Π": return 80;
+
                 case "Q": return 90;
+                case "Ϙ": return 90;
+
                 case "R": return 100;
+                case "Ρ": return 100; //rho
+
                 case "S": return 200;
+                case "Σ": return 200;
+
                 case "T": return 300;
+                case "Τ": return 300; //this is the greek letter
+
                 case "U": return 400;
+                case "Υ": return 400; //upsilon
                 case "Y": return 400;
+
                 case "PH": return 500;
+                case "Φ": return 500;
+
                 case "CH": return 600;
+                case "Χ": return 600; //chi
+
                 case "PS": return 700;
+                case "Ψ": return 700;
+
                 case "@": return 800; // OMEGA stand-in for keyboards that do not have it
                 case "Ω": return 800;
+
                 case "TS": return 900;
+                case "ϡ": return 900;
+                default: return 0;
+            }
+        }
+
+        private int abjad(string letter)
+        {
+            switch(letter)
+            {
+                case "ا": return 1;   //name : alif
+                case "ب": return 2;   //name : bāʼ
+                case "پ": return 2;   //name : pe ** persian letter
+                case "ج": return 3;   //name : jīm
+                case "چ": return 3;   //name : če or che ** persian letter
+                case "د": return 4;   //name : dāl
+                case "ه": return 5;   //name : hāʼ
+                case "و": return 6;   //name : wāw
+                case "ز": return 7;   //name : zayn/zāy
+                case "ژ": return 7;   //name : že or zhe ** persian letter
+                case "ح": return 8;   //name : ḥāʼ
+                case "ط": return 9;   //name : ṭāʼ
+                case "ي": return 10;  //name : yāʼ
+                case "ك": return 20;  //name : kāf
+                case "گ": return 20;  //name : gâf ** persian letter
+                case "ل": return 30;  //name : lām
+                case "م": return 40;  //name : mīm
+                case "ن": return 50;  //name : nūn
+                case "س": return 60;  //name : sīn
+                case "ع": return 70;  //name : ʻayn
+                case "ف": return 80;  //name : fāʼ
+                case "ص": return 90;  //name : ṣād
+                case "ق": return 100; //name : qāf
+                case "ر": return 200; //name : rāʼ
+                case "ش": return 300; //name : shīn
+                case "ت": return 400; //name : tāʼ
+                case "ث": return 500; //name : thāʼ
+                case "خ": return 600; //name : khāʼ
+                case "ذ": return 700; //name : dhāl
+                case "ض": return 800; //name : ḍād
+                case "ظ": return 900; //name : ẓāʼ
+                case "غ": return 1000;//name : ghayn
+                default: return 0; 
+            }
+        }
+
+        private int mispar_milui(string letter) // full name value. Note: There is more than one way to spell each letter and the gematria calculator uses the most common spellings.
+        {
+            switch(letter)
+            {
+                case "A": return 111;
+                case "א": return 111;
+                case "E": return 111;
+
+                case "B": return 412;
+                case "ב": return 412;
+
+                case "G": return 73;
+                case "ג": return 73;
+
+                case "D": return 434;
+                case "ד": return 434;
+
+                case "H": return 6;
+                case "ה": return 6;
+
+                case "U": return 22;
+                case "ו": return 22;
+                case "V": return 22;
+
+                case "Z": return 77;
+                case "ז": return 77;
+
+                case "CH": return 418;
+                case "ח": return 418;
+
+                case "T": return 419;
+                case "ט": return 419;
+
+                case "J": return 20;
+                case "I": return 20;
+                case "Y": return 20;
+                case "י": return 20;
+
+                case "W": return 44; // V == 6: return W == VV: return 6 + 6 == 12
+
+                case "K": return 100;
+                case "כ": return 100;
+
+                case "L": return 74;
+                case "ל": return 74;
+
+                case "M": return 80;
+                case "מ": return 80;
+
+                case "N": return 106;
+                case "נ": return 106;
+
+                case "S": return 120;
+                case "ס": return 120;
+
+                case "A'A": return 130;
+                case "ע": return 130;
+
+                case "P": return 81;
+                case "פ": return 81;
+
+                case "TZ": return 104;
+                case "צ": return 104;
+
+                case "Q": return 186;
+                case "ק": return 186;
+
+                case "R": return 510;
+                case "ר": return 510;
+
+                case "SH": return 360;
+                case "ש": return 360;
+
+                case "TH": return 406;
+                case "ת": return 406;
+
                 default: return 0;
             }
         }
@@ -146,8 +375,10 @@ namespace WindowsFormsApp1
          * this function determines which cipher to use.
          * 
          * 0 = NAEQ6
-         * 1 = Simple Gematria
+         * 1 = mispar gadol
          * 2 = Isopsephy
+         * 3 = Abjad
+         * 4 = mispar miluil
          * 
          */
         private void populateCipher() 
@@ -175,6 +406,7 @@ namespace WindowsFormsApp1
 
                     cipher_dipthongs = dipthong_join(cipher_dipthongs, dipthongList);
                     break;
+                case 4:
                 case 1:
                     dipthongList.Add("CH");
                     dipthongList.Add("A'A");
@@ -192,7 +424,7 @@ namespace WindowsFormsApp1
 
             label1.Text = string.Join(" + ", cipher_dipthongs.Where(s => !string.IsNullOrEmpty(s))); // Prints the input as individual "letters"
             
-            int[] cipher_numbers = cipher_convert(cipher_dipthongs, comboBox1.SelectedIndex);
+            int[] cipher_numbers = cipher_convert(cipher_dipthongs, comboBox1.SelectedIndex); // this is where the cipher is converted from letters to numbers
             string[] cipher_numbers_string = null;
             Array.Resize(ref cipher_numbers_string, cipher_numbers.Length);
             for (int i = 0; i < cipher_numbers.Length; i++)
@@ -204,25 +436,30 @@ namespace WindowsFormsApp1
             label3.Text = cipher_numbers.Sum().ToString();
         }
 
+        delegate int ConvertMethod(string inString);
+
         private int[] cipher_convert(string[] cipher_letters, int cipher_control)
         {
             int[] cipher_numbers = null;
             Array.Resize(ref cipher_numbers, cipher_letters.Length);
-
-            if (cipher_control == 2) // isopsephy
+            ConvertMethod cipher = null;
+            switch(cipher_control)
             {
-                for (int letter = 0; letter < cipher_letters.Length; letter++)
-                {
-                    cipher_numbers[letter] = isopsephy(cipher_letters[letter]);
-                }
+                case 4: cipher = mispar_milui;  break;
+                case 3: cipher = abjad;         break;
+                case 2: cipher = isopsephy;     break;
+                case 1: cipher = mispar_gadol;  break;
+                case 0: // NAEQ6
+                default: cipher = NAEQ6;        break;
             }
-            else if (cipher_control == 1) // simple gematria
+
+            for (int letter = 0; letter < cipher_letters.Length; letter++)
             {
-                for (int letter = 0; letter < cipher_letters.Length; letter++)
+                if (cipher_control == 1)
                 {
                     if (letter == cipher_letters.Length - 1)
                     {
-                        switch(cipher_letters[letter]) // the below is for final letters only.
+                        switch (cipher_letters[letter]) // the below is for final letters only in mispar_gadol
                         {
                             case "K": cipher_letters[letter] = "K."; break;
                             case "M": cipher_letters[letter] = "M."; break;
@@ -233,18 +470,11 @@ namespace WindowsFormsApp1
                     }
                     if (letter == cipher_letters.Length - 2 && cipher_letters[letter] == "TZ")
                     {
-                        cipher_letters[letter] = "TZ.";
+                        cipher_letters[letter] = "TZ."; // for final TZ in mispar_gadol
                     }
+                }
 
-                    cipher_numbers[letter] = simpleGematria(cipher_letters[letter]);
-                }
-            }
-            else // NAEQ6
-            {
-                for (int letter = 0; letter < cipher_letters.Length; letter++)
-                {
-                    cipher_numbers[letter] = NAEQ6(cipher_letters[letter]);
-                }
+                cipher_numbers[letter] = cipher(cipher_letters[letter]);
             }
 
             return cipher_numbers;
