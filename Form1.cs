@@ -372,7 +372,8 @@ namespace WindowsFormsApp1
         }
 
         /*
-         * this function determines which cipher to use.
+         * this function determines which cipher to use. It should be called whenever the page needs to be refreshed.
+         * It populates the labels with the strings and numbers associated with the corresponding ciphers
          * 
          * 0 = NAEQ6
          * 1 = mispar gadol
@@ -437,7 +438,7 @@ namespace WindowsFormsApp1
         }
 
         delegate int ConvertMethod(string inString);
-
+        // takes a string array of letters and/or dipthongs and returns an int array of their correspoding values.
         private int[] cipher_convert(string[] cipher_letters, int cipher_control)
         {
             int[] cipher_numbers = null;
@@ -453,34 +454,33 @@ namespace WindowsFormsApp1
                 default: cipher = NAEQ6;        break;
             }
 
+            if (cipher_control == 1 && cipher_letters.Length >= 1)
+            {
+                int letter = cipher_letters.Length - 1;
+                switch (cipher_letters[letter]) // the below is for final letters only in mispar_gadol
+                {
+                    case "K": cipher_letters[letter] = "K."; break;
+                    case "M": cipher_letters[letter] = "M."; break;
+                    case "N": cipher_letters[letter] = "N."; break;
+                    case "P": cipher_letters[letter] = "P."; break;
+                    default: break;
+                }
+                if (cipher_letters.Length >= 2 && cipher_letters[letter - 1] == "TZ")
+                {
+                    cipher_letters[letter - 1] = "TZ."; // for final TZ in mispar_gadol
+                }
+            }
+
             for (int letter = 0; letter < cipher_letters.Length; letter++)
             {
-                if (cipher_control == 1)
-                {
-                    if (letter == cipher_letters.Length - 1)
-                    {
-                        switch (cipher_letters[letter]) // the below is for final letters only in mispar_gadol
-                        {
-                            case "K": cipher_letters[letter] = "K."; break;
-                            case "M": cipher_letters[letter] = "M."; break;
-                            case "N": cipher_letters[letter] = "N."; break;
-                            case "P": cipher_letters[letter] = "P."; break;
-                            default: break;
-                        }
-                    }
-                    if (letter == cipher_letters.Length - 2 && cipher_letters[letter] == "TZ")
-                    {
-                        cipher_letters[letter] = "TZ."; // for final TZ in mispar_gadol
-                    }
-                }
-
                 cipher_numbers[letter] = cipher(cipher_letters[letter]);
             }
 
             return cipher_numbers;
         }
 
-        private string[] dipthong_join(string[] cipher_letters, List<string> dipthong_list)
+        // takes a string array of letters and a list of dipthongs and attepts to join the elements in the string array to match the dipthongs. returns the edited array
+        private string[] dipthong_join(string[] cipher_letters, List<string> dipthong_list) // WARNING: only supports 2 or 3 letter dipthongs
         {
 
             foreach (string dipthong in dipthong_list)
@@ -489,7 +489,7 @@ namespace WindowsFormsApp1
                 {
                     if (!string.IsNullOrEmpty(cipher_letters[letter]) && !string.IsNullOrEmpty(cipher_letters[letter + 1]) && cipher_letters[letter][0] == dipthong[0] && cipher_letters[letter + 1][0] == dipthong[1]) //checks if first two letters match
                     {
-                        if (dipthong.Length == 3 && !string.IsNullOrEmpty(cipher_letters[letter+ 2]) && cipher_letters[letter + 2][0] == dipthong[2])
+                        if (dipthong.Length == 3 && !string.IsNullOrEmpty(cipher_letters[letter+ 2]) && cipher_letters[letter + 2][0] == dipthong[2]) //checks for 3 letter dipthongs
                         {
                             cipher_letters[letter] = cipher_letters[letter] + cipher_letters[letter + 1] + cipher_letters[letter + 2];
                             cipher_letters[letter + 1] = String.Empty;
