@@ -23,6 +23,7 @@ namespace WindowsFormsApp1
             
         }
 
+        //takes a letter as input and returns the cipher value for the named cipher
         private int NAEQ6(string letter) // this function only takes a letter and outputs a number.
         {
 
@@ -58,6 +59,7 @@ namespace WindowsFormsApp1
             }
         }
 
+        //takes a letter as input and returns the cipher value for the named cipher
         private int mispar_gadol(string letter) // this only takes a "letter" and outputs a number. (dipthongs are letters)
         {
 
@@ -156,7 +158,7 @@ namespace WindowsFormsApp1
         }
 
 
-
+        //takes a letter as input and returns the cipher value for the named cipher
         private int isopsephy(string letter) // this only takes a "letter" and outputs a number. (dipthongs are letters)
         {
             switch (letter)
@@ -246,6 +248,7 @@ namespace WindowsFormsApp1
             }
         }
 
+        //takes a letter as input and returns the cipher value for the named cipher
         private int abjad(string letter)
         {
             switch(letter)
@@ -286,6 +289,7 @@ namespace WindowsFormsApp1
             }
         }
 
+        //takes a letter as input and returns the cipher value for the named cipher
         private int mispar_milui(string letter) // full name value. Note: There is more than one way to spell each letter and the gematria calculator uses the most common spellings.
         {
             switch(letter)
@@ -379,7 +383,7 @@ namespace WindowsFormsApp1
          * 1 = mispar gadol
          * 2 = Isopsephy
          * 3 = Abjad
-         * 4 = mispar miluil
+         * 4 = mispar milui
          * 
          */
         private void populateCipher() 
@@ -479,7 +483,7 @@ namespace WindowsFormsApp1
             return cipher_numbers;
         }
 
-        // takes a string array of letters and a list of dipthongs and attepts to join the elements in the string array to match the dipthongs. returns the edited array
+        // takes a string array of letters and a list of dipthongs (strings) and attepts to join the elements in the string array to match the dipthongs. returns the edited array
         private string[] dipthong_join(string[] cipher_letters, List<string> dipthong_list) // WARNING: only supports 2 or 3 letter dipthongs
         {
 
